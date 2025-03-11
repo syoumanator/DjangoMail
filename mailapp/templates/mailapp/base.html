@@ -20,17 +20,20 @@
      </style>
 
 </head>
-<header>{% include 'mailapp/includes/inc_menu.html' %}</header>
+<header>
+    {% include 'mailapp/includes/inc_menu.html' %}
+</header>
 <body>
 <main>
      <div class="container">
          {% block content %}
          {% endblock %}
      </div>
- </main>
- <footer>
-     <p class="text-center text-body-secondary">&copy; 2025 MailApp. Все права защищены.</p>
- </footer>
- <script src="/static/js/bootstrap.bundle.min.js"></script>
- </body>
- </html>
+</main>
+
+<div class="container">
+{% include 'mailapp/includes/inc_menu_bottom.html' %}
+</div>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

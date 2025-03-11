@@ -1,0 +1,13 @@
+{% extends 'mailapp/base.html' %}
+{% block content %}
+<h1>Информация о получателе</h1>
+
+<p>Имя: {{ object.full_name }}</p>
+<p>Email: {{ object.email }}</p>
+<p>Комментарий: {{ object.comment }}</p>
+ 
+<a href="{% url 'mailapp:recipient_mail_list' %}" class="btn btn-outline-primary">Назад к списку получателей</a>
+<a href="{% url 'mailapp:recipient_update' object.pk %}" class="btn btn-outline-success">Изменить данные</a>
+<a href="{% url 'mailapp:recipient_delete' object.pk %}" class="btn btn-outline-danger">Удалить получателя</a>
+
+ {% endblock %}

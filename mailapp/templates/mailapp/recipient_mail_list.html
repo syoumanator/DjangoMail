@@ -1,0 +1,19 @@
+{% extends 'mailapp/base.html' %}
+{% block content %}
+
+<h1>Список получателей</h1>
+<p>В этом списке находятся все адреса электронной почты, которые были добавлены в ваш список рассылки.</p>
+
+<ul>
+    {% for recipient in object_list %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ recipient.full_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{ recipient.email }}</h6>
+            <a href="{% url 'mailapp:recipient_detail' recipient.pk %}" class="card-link">Подробнее</a>
+
+        </div>
+    </div>
+    {% endfor %}
+</ul>
+{% endblock %}

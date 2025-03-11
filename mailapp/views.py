@@ -8,15 +8,12 @@ class RecipientMailListViews(ListView):
     model = RecipientMail
     template_name = 'mailapp/recipient_mail_list.html'
     context_object_name = 'recipient_mails'
-    paginate_by = 10
-    ordering = ['full_name']
 
 
 class RecipientMailDetailViews(DetailView):
     model = RecipientMail
     template_name = 'mailapp/recipient_mail_detail.html'
     context_object_name = 'recipient_mail'
-    ordering = ['full_name']
 
 
 class RecipientMailCreateViews(CreateView):
@@ -35,5 +32,7 @@ class RecipientMailUpdateViews(UpdateView):
 
 class RecipientMailDeleteViews(DeleteView):
     model = RecipientMail
-    template_name = 'recipient_mail_delete.html'
+    # template_name = 'recipient_mail_confirm_delete.html'
+    template_name = 'mailapp/recipient_mail_confirm_delete.html'
+
     success_url = reverse_lazy('mailapp:recipient_mail_list')
