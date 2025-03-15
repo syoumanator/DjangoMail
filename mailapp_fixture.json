@@ -1,0 +1,20 @@
+[
+{
+    "model": "mailapp.recipientmail",
+    "pk": 1,
+    "fields": {
+        "email": "alik.plotnikov777@mail.ru",
+        "full_name": "test test test",
+        "comment": "test"
+    }
+},
+{
+    "model": "mailapp.recipientmail",
+    "pk": 2,
+    "fields": {
+        "email": "alik220201@gmail.com",
+        "full_name": "test test test",
+        "comment": "123"
+    }
+}
+]
