@@ -32,7 +32,5 @@ class RecipientMailUpdateViews(UpdateView):
 
 class RecipientMailDeleteViews(DeleteView):
     model = RecipientMail
-    # template_name = 'recipient_mail_confirm_delete.html'
     template_name = 'mailapp/recipient_mail_confirm_delete.html'
-
     success_url = reverse_lazy('mailapp:recipient_mail_list')
