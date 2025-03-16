@@ -1,0 +1,24 @@
+{% extends 'mailapp/base.html' %}
+{% block content %}
+<h1>Информация о рассылке</h1>
+
+<div class="card">
+    <div class="card-body">
+        <p class="card-text">Дата и время первой отправки: {{ mailing.start_time }}</p>
+        <p class="card-text">Дата и время последней отправки: {{ mailing.end_time }}</p>
+        <p class="card-text">Статус рассылки: {{ mailing.status }}</p>
+        <p class="card-text">Сообщение: {{ mailing.message }}</p>
+        <p class="card-text">Частота рассылки: {{ mailing.frequency }}</p>
+        <p class="card-text">Получатели:
+            {% for recipient in mailing.recipients.all %}
+            {{ recipient.email }},
+            {% endfor %}
+        </p>
+    </div>
+    <a href="{% url 'mailapp:mailing_list' %}" class="btn btn-outline-primary">Назад к списку получателей</a>
+
+    <a href="{% url 'mailapp:mailing_update' mailing.pk %}" class="btn btn-outline-success">Изменить данные</a>
+    <a href="{% url 'mailapp:mailing_delete' mailing.pk %}" class="btn btn-outline-danger">Удалить получателя</a>
+
+</div>
+{% endblock %}
