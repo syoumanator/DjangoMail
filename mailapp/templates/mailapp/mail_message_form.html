@@ -11,14 +11,14 @@
                         {{ form.non_field_errors }}
                         {{ form.as_p }}
                     </div>
-                        <button type="submit" class="btn btn-primary">
-                        {% if recipient %}
+                    <button type="submit" class="btn btn-primary">
+                        {% if message %}
                         Сохранить
                         {% else %}
                         Создать
                         {% endif %}
                     </button>
-                    <a class="btn btn-primary" href="{% if recipient %}{% url 'mailapp:recipient_detail' recipient.pk %}{% else %}{% url 'mailapp:recipient_list' %}{% endif %}" role="button">Отменить</a>
+                    <a class="btn btn-primary" href="{% if message %}{% url 'mailapp:message_detail' message.pk %}{% else %}{% url 'mailapp:mail_message_list' %}{% endif %}" role="button">Отменить</a>
                 </div>
             </form>
         </div>

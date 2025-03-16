@@ -3,10 +3,11 @@
 
 <h1>Список получателей</h1>
 <p>В этом списке находятся все адреса электронной почты, которые были добавлены в ваш список рассылки.</p>
-<a href="{% url 'mailapp:recipient_create' %}" class="card-link">Создать</a>
+<a href="{% url 'mailapp:recipient_create' %}" class="card-link">Добавить получателя</a>
 
+{% if recipients %}
 <ul>
-    {% for recipient in object_list %}
+    {% for recipient in recipients %}
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">{{ recipient.full_name }}</h5>
@@ -16,4 +17,8 @@
     </div>
     {% endfor %}
 </ul>
+{% else %}
+<p>Ваш список получателей пуст.</p>
+{% endif %}
+
 {% endblock %}
