@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from users.models import CustomUser
 
+
 @admin.register(CustomUser)
-class CustomUserAdmin(admin.ModelAdmin):
-    exclude = ('password',)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('id', 'email', 'avatar', 'phone_number', 'area')
+    search_fields = ('email', 'area')

@@ -21,9 +21,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mailapp/', include('mailapp.urls', namespace='mailapp')),
-    path('users/', include('users.urls', namespace='users')),
+    # path('mailapp/', include('mailapp.urls', namespace='mailapp')),
+    path("", include("mailapp.urls", namespace="mailapp")),
 
+    path('users/', include('users.urls', namespace='users')),
 ]
 
 if settings.DEBUG:

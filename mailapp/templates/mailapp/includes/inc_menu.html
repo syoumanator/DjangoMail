@@ -1,10 +1,18 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <a class="p-2 btn btn-outline-primary" href="{% url 'mailapp:main_template' %}" role="button">Главная</a>
     <a class="p-2 btn btn-outline-primary" data-bs-toggle="dropdown">Профиль</a>
         <ul class="dropdown-menu">
             {% if user.is_authenticated %}
+                <li>
+                    <p class="dropdown-item">
+                        <a class="dropdown-item" href="{% url 'users:profile_detail' user.pk %}">{{ user.email }}</a>
+                    </p>
+                </li>
                 <li><a class="dropdown-item" href="{% url 'mailapp:recipient_create' %}">Добавить клиента</a></li>
                 <li><a class="dropdown-item" href="{% url 'mailapp:message_create' %}">Добавить сообщение</a></li>
                 <li><a class="dropdown-item" href="{% url 'mailapp:mailing_create' %}">Добавить рассылку</a></li>
+                <li><a class="dropdown-item" href="{% url 'users:user_list' %}">Список пользователей</a></li>
+
                 <li><form method="post" action="{% url 'users:logout' %}">
                     {% csrf_token %}
                         <button type="submit" class="dropdown-item">Выйти</button>
@@ -15,12 +23,15 @@
                 <li><a class="dropdown-item" href="{% url 'users:register' %}">Зарегистрироваться</a></li>
             {% endif %}
         </ul>
-
+    {% if user.is_authenticated %}
     <nav class="ms-5">
         <a class="p-2 btn btn-outline-primary" href="{% url 'mailapp:recipient_list' %}" role="button">Список клиентов</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'mailapp:mail_message_list' %}" role="button">Список сообщений</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'mailapp:mailing_list' %}" role="button">Список рассылок</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'mailapp:mailing_attempts' %}" role="button">Попытки отправки</a>
     </nav>
+    {% endif %}
+
 </div>
 
 

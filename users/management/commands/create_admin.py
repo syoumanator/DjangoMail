@@ -3,12 +3,12 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    help = "Создание нового пользователя с ролью 'admin'"
+    help = "Create superuser"
 
     def handle(self, *args, **options):
-        User = get_user_model()
+        CustomUser = get_user_model()
 
-        user = User.objects.create(
+        user = CustomUser.objects.create(
             email="admin@example.com",
             first_name="Admin",
             last_name="User",

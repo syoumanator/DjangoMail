@@ -3,11 +3,12 @@ from mailapp.apps import MailappConfig
 from mailapp.views import RecipientMailListViews, RecipientMailDetailViews, RecipientMailCreateViews, \
      RecipientMailUpdateViews, RecipientMailDeleteViews, MailMessageListViews, MailMessageDetailViews, \
      MailMessageCreateViews, MailMessageUpdateViews, MailMessageDeleteViews, MailingListViews, MailingDetailViews, \
-     MailingCreateViews, MailingUpdateViews, MailingDeleteViews
+     MailingCreateViews, MailingUpdateViews, MailingDeleteViews, MailingAttemptListViews, IndexTemplateViews
 
 app_name = MailappConfig.name
 
 urlpatterns = [
+     path("", IndexTemplateViews.as_view(), name="main_template"),
      path("recipient/", RecipientMailListViews.as_view(), name="recipient_list"),
      path("recipient/detail/<int:pk>/", RecipientMailDetailViews.as_view(), name="recipient_detail"),
      path("recipient/create/", RecipientMailCreateViews.as_view(), name="recipient_create"),
@@ -25,4 +26,7 @@ urlpatterns = [
      path("mailing/create/", MailingCreateViews.as_view(), name="mailing_create"),
      path("mailing/update/<int:pk>/", MailingUpdateViews.as_view(), name="mailing_update"),
      path("mailing/delete/<int:pk>/", MailingDeleteViews.as_view(), name="mailing_delete"),
+
+     path("attempts/", MailingAttemptListViews.as_view(), name="mailing_attempts"),
+
 ]

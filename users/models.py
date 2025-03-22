@@ -17,5 +17,9 @@ class CustomUser(AbstractUser):
         return self.email
 
     class Meta:
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+        permissions = [
+            ('can_view_user_list', 'Can view user list'),
+            ('can_blocking_user', 'Can blocking user')
+        ]
