@@ -7,7 +7,13 @@ from django.contrib.auth.views import (
     PasswordResetConfirmView,
     PasswordResetCompleteView,
 )
-from .views import UserCreateView, email_verification, UserProfileUpdateView, UserProfileDetailView, UsersListView
+from .views import (
+    UserCreateView,
+    email_verification,
+    UserProfileUpdateView,
+    UserProfileDetailView,
+    UsersListView,
+)
 
 from users.apps import UsersConfig
 
@@ -19,7 +25,9 @@ urlpatterns = [
     path("list/", UsersListView.as_view(), name="user_list"),
     path("verify/<str:verification_token>/", email_verification, name="verify_email"),
     path("profile/<int:pk>/", UserProfileDetailView.as_view(), name="profile_detail"),
-    path("profile/edit/<int:pk>/", UserProfileUpdateView.as_view(), name="edit_profile"),
+    path(
+        "profile/edit/<int:pk>/", UserProfileUpdateView.as_view(), name="edit_profile"
+    ),
     path(
         "reset_password/",
         PasswordResetView.as_view(
@@ -31,7 +39,9 @@ urlpatterns = [
     ),
     path(
         "reset_password_sent/",
-        PasswordResetDoneView.as_view(template_name="users/registration/password_reset_done.html"),
+        PasswordResetDoneView.as_view(
+            template_name="users/registration/password_reset_done.html"
+        ),
         name="password_reset_done",
     ),
     path(
@@ -44,7 +54,9 @@ urlpatterns = [
     ),
     path(
         "reset_password_complete/",
-        PasswordResetCompleteView.as_view(template_name="users/registration/password_reset_complete.html"),
+        PasswordResetCompleteView.as_view(
+            template_name="users/registration/password_reset_complete.html"
+        ),
         name="password_reset_complete",
     ),
 ]

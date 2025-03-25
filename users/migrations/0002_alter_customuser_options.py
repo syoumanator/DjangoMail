@@ -6,12 +6,19 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0001_initial'),
+        ("users", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='customuser',
-            options={'permissions': [('can_view_user_list', 'Can view user list'), ('can_blocking_user', 'Can blocking user')], 'verbose_name': 'Пользователь', 'verbose_name_plural': 'Пользователи'},
+            name="customuser",
+            options={
+                "permissions": [
+                    ("can_view_user_list", "Can view user list"),
+                    ("can_blocking_user", "Can blocking user"),
+                ],
+                "verbose_name": "Пользователь",
+                "verbose_name_plural": "Пользователи",
+            },
         ),
     ]

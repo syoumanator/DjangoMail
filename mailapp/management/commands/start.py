@@ -9,10 +9,16 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("mailing_id", type=int)
-        parser.add_argument("--status", choices=["Создана", "Запущена", "Завершена"], default="Создана")
+        parser.add_argument(
+            "--status", choices=["Создана", "Запущена", "Завершена"], default="Создана"
+        )
 
         # optional argument
-        parser.add_argument("--frequency", choices=["раз в минуту", "раз в день", "раз в неделю", "раз в месяц"], default="раз в день")
+        parser.add_argument(
+            "--frequency",
+            choices=["раз в минуту", "раз в день", "раз в неделю", "раз в месяц"],
+            default="раз в день",
+        )
 
     def handle(self, *args, **options):
         mailing_id = options["mailing_id"]
@@ -26,4 +32,6 @@ class Command(BaseCommand):
 
         MailingService.start_mailing(mailing)
 
-        self.stdout.write(self.style.SUCCESS(f"Mailing with ID {mailing_id} has been started"))
+        self.stdout.write(
+            self.style.SUCCESS(f"Mailing with ID {mailing_id} has been started")
+        )

@@ -20,27 +20,25 @@ class StyleFormMixin:
 
 class UserRegisterForm(StyleFormMixin, UserCreationForm):
     email = forms.EmailField(
-        required=True,
-        help_text='Введите актуальный адрес электронной почты.'
+        required=True, help_text="Введите актуальный адрес электронной почты."
     )
     avatar = forms.ImageField(
-        required=False,
-        help_text='Необязательно. Загрузите изображение для аватарки.'
+        required=False, help_text="Необязательно. Загрузите изображение для аватарки."
     )
     phone_number = forms.CharField(
         max_length=15,
         required=False,
-        help_text='Необязательно. Введите актуальный номер телефона.'
+        help_text="Необязательно. Введите актуальный номер телефона.",
     )
     area = forms.CharField(
         max_length=15,
         required=False,
-        help_text='Необязательно. Введите страну проживания.'
+        help_text="Необязательно. Введите страну проживания.",
     )
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'avatar', 'phone_number', 'area', 'password1', 'password2')
+        fields = ("email", "avatar", "phone_number", "area", "password1", "password2")
 
         def clean_email(self):
             email = self.cleaned_data.get("email")
@@ -51,9 +49,9 @@ class UserRegisterForm(StyleFormMixin, UserCreationForm):
             return email
 
     def clean_phone_number(self):
-        phone_number = self.cleaned_data.get('phone_number')
+        phone_number = self.cleaned_data.get("phone_number")
         if phone_number and not phone_number.isdigit():
-            raise forms.ValidationError('Номер телефона должен содержать только цифры.')
+            raise forms.ValidationError("Номер телефона должен содержать только цифры.")
         return phone_number
 
 

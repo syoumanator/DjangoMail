@@ -37,7 +37,11 @@ class MailingService:
 
                 # Создаем запись попытки отправки
                 mailing_attempt = MailingAttempt.objects.create(
-                    status=MailingAttempt.SUCCESSFULLY if success > 0 else MailingAttempt.UNSUCCESSFULLY,
+                    status=(
+                        MailingAttempt.SUCCESSFULLY
+                        if success > 0
+                        else MailingAttempt.UNSUCCESSFULLY
+                    ),
                     mail_server_response="Успешно" if success > 0 else "Ошибка",
                     mailing=mailing,
                 )
@@ -46,7 +50,9 @@ class MailingService:
             except SMTPException as e:
                 # Обработка ошибок SMTP
                 mailing_attempt = MailingAttempt.objects.create(
-                    status=MailingAttempt.UNSUCCESSFULLY, mail_server_response=str(e), mailing=mailing
+                    status=MailingAttempt.UNSUCCESSFULLY,
+                    mail_server_response=str(e),
+                    mailing=mailing,
                 )
                 mailing_attempt.save()
 

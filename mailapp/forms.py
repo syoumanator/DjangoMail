@@ -37,7 +37,9 @@ class MailingForm(StyleFormMixin, forms.ModelForm):
         user = kwargs.pop("user", None)
         super().__init__(*args, **kwargs)
         if user:
-            self.fields["recipients"].queryset = RecipientMail.objects.filter(owner=user)
+            self.fields["recipients"].queryset = RecipientMail.objects.filter(
+                owner=user
+            )
             self.fields["message"].queryset = MailMessage.objects.filter(owner=user)
 
     def clean_recipients(self):
@@ -45,6 +47,7 @@ class MailingForm(StyleFormMixin, forms.ModelForm):
         if not recipients:
             raise forms.ValidationError("Вы должны указать получателей.")
         return recipients
+
 
 class MailMessageForm(StyleFormMixin, forms.ModelForm):
     class Meta:
