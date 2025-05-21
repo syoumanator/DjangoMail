@@ -1,0 +1,26 @@
+{% extends 'mailapp/base.html' %}
+{% block content %}
+<h1>Список сообщений</h1>
+<p>В этом списке находятся все сообщения.</p>
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ message.subject }}</h5>
+            <a href="{% url 'mailapp:message_detail' message.pk %}" class="card-link">Подробнее</a>
+        </div>
+    </div>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Ваш список сообщений пуст.</p>
+{% endif %}
+<ul>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <a href="{% url 'mailapp:message_create' %}" class="card-link">Добавить сообщение</a>
+        </div>
+    </div>
+</ul>
+{% endblock %}
